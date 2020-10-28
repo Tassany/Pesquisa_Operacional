@@ -29,8 +29,8 @@ class Data
 
     public:
         Data(char* filePath);  
-        int getNumI;
-        int getNumJ;
+        int getNumI();
+        int getNumJ();
         double getCusto(int I, int J);
         double getCapacidadeMax(int I, int J);
         double getCapacidadeMin(int I, int J);
@@ -40,4 +40,4 @@ class Data
 };
 
 
-#endif
+
