@@ -25,7 +25,7 @@ class Data
         std::vector<std::vector<double> > custo;
         std::vector<std::vector<double> > capacidadeMax;
         std::vector<std::vector<double> > capacidadeMin;
-        std::vector<double> fluxoLiq;
+        std::vector<float> fluxoLiq;
 
     public:
         Data(char* filePath);  
@@ -34,7 +34,7 @@ class Data
         double getCusto(int I, int J);
         double getCapacidadeMax(int I, int J);
         double getCapacidadeMin(int I, int J);
-        double getFluxoLiq(int I);
+        float getFluxoLiq(int I);
 
 
 };

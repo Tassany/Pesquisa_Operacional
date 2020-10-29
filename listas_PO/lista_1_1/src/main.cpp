@@ -25,7 +25,7 @@ void solve(Data& data){
     IloEnv env;
     IloModel modelo(env);
 
-    IloNumVarArray x(env, data.getNumCulturas(), 0, IloInfinity);
+    
 
 
 

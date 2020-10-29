@@ -28,12 +28,11 @@ void solve(Data& data)
     //Como a variável depende de i e j é necessário criar um vetor de duas dimensões
     //vector<vector<float>>x seria a criação do vetor normalmente, entretanto o cplex funciona de outra forma
     //Depois de criado o vetor, é preciso preencher cada indice i do array com um vetor de tamanho j
-    
-    IloNumVarArray x(env, data.getNumI(), 0);
+
     IloArray <IloNumVarArray> x(env, data.getNumI());
     for(int i = 0; i < data.getNumI(); i++)
     {
-        IloNumVarArray vetAux(env, data.getNumJ(), 0);
+        IloNumVarArray vetAux(env, data.getNumJ(), 0, IloInfinity);
     
         x[i] = vetAux;
     }
@@ -65,8 +64,8 @@ void solve(Data& data)
 
     IloExpr nos(env);
     for(int i = 0; i < data.getNumI(); i++){
-        double somaEntrada;
-        double somaSaida;
+        IloExpr somaEntrada(env);
+        IloExpr somaSaida(env);
         for(int j = 0; j < data.getNumJ(); j++){
             
             somaEntrada += (x[i][j]);
@@ -77,14 +76,14 @@ void solve(Data& data)
         }
         nos = somaSaida - somaEntrada;
 
-        modelo.add( (nos = data.getFluxoLiq(i));
+        modelo.add( (nos == data.getFluxoLiq(i)));
     }
 
     for(int i = 0; i < data.getNumI(); i++){
         for(int j = 0; j < data.getNumJ(); j++){
         
-            double result = x[i][j] <= data.getCapacidadeMax(i,j);
-            modelo.add(result);  
+    
+            modelo.add(x[i][j] <= data.getCapacidadeMax(i,j));  
         }
        
     }

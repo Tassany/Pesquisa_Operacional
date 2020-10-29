@@ -65,7 +65,7 @@ Data::Data(char* filePath)
     }
 
     //lendo o fluxo líquido de cada nó
-    fluxoLiq = std::vector<double>(numI);
+    fluxoLiq = std::vector<float>(numI);
     for(int i = 0; i <numI; i++)
     {
         if(fscanf(f, "%lf", &fluxoLiq[i]) != 1)
@@ -104,7 +104,7 @@ double Data::getCapacidadeMin(int I, int J)
     return capacidadeMin[I][J];
 }
 
-double Data::getFluxoLiq(int I)
+float Data::getFluxoLiq(int I)
 {
     return fluxoLiq[I];
 }
