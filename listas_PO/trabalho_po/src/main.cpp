@@ -64,7 +64,7 @@ void solve(Data& data)
                 }
             }
         }
-        printf("\n  vertice ai boy %d \n",i);
+
         modelo.add( -somaSaida + somaEntrada == data.getDemanda(i));
 
     }
@@ -96,6 +96,36 @@ void solve(Data& data)
 
     std::cout << "\nstatus:" << tas.getStatus() << std::endl;
     std::cout << "custo minimo:" << tas.getObjValue() << std::endl;
+    double menor = 0.0;
+
+    if(data.getDemanda(data.getOrigem() - 1) <= data.getDemanda(data.getDestino() - 1)){
+        menor = -1*data.getDemanda(data.getOrigem() - 1);
+    }else{
+        menor = data.getDemanda(data.getDestino() - 1);
+    }
+    double fluxo = menor - tas.getObjValue();
+    std::cout << "fluxo máximo:" << fluxo <<  std::endl;
+
+
+    for(int i = 0; i < data.getNumArcos(); i++) 
+    {
+        double value = tas.getValue(x[i]);
+        if(value > 0.00001)
+        {   
+
+            std::cout << "arco " << i + 1 << ": "<<std::endl;
+
+            if(data.getArcos(i,0) ){
+                std::cout << "  vai de " << data.getArcos(i,0);
+            }
+            if(data.getArcos(i,1)){
+                std::cout << " até " << data.getArcos(i,1) << std::endl;
+            }
+
+            std::cout << " encaminhando " << value << std::endl;
+            std::cout << "  " << std::endl;
+        }
+    }
     
 
 }

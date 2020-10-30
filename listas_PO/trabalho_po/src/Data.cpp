@@ -122,33 +122,7 @@ Data::Data(char* filePath)
 
         custo[j] = 0.0;
     }
-/*
-    printf("leu\n");
 
-    puts("\ndemanda dos nos:");
-    for(int i = 0; i < vertices; i++)
-    {
-        printf("%.1lf ", demanda[i]);
-    }
-    puts("");
-
-    puts("\ninfo dos arcos:");
-    for(int i = 0; i < numArcos; i++)
-    {
-        printf("%.1lf %d %.1lf\n", custo[i], 0, fluxo_max[i]);
-    }
-
-    puts("\nnos dos arcos:");
-    for(int i = 0; i < numArcos; i++)
-    {
-        for(int j = 0; j < arcos[i].size(); j++){
-
-            printf("%d ", arcos[i][j]);
-        }
-
-        puts("");
-    }
-*/
     fclose(f);
 }
 
