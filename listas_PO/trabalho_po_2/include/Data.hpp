@@ -1,12 +1,3 @@
-
-
-/*
-
-
-
-*/
-
-
 #define _DATA_H_
 
 #include <vector>
@@ -26,7 +17,7 @@ class Data
         int ec1; // custo estoque de c1
         int ec2; // custo estoque de c2
         
-        std::vector<int>  demandaSem; //demanda da semana
+        std::vector<int>demandaSem; //demanda da semana
 
 
     public:
